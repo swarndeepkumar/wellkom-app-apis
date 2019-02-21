@@ -33,13 +33,15 @@ mongoose.set('debug', true);
 
 //Models & routes
 require('./models/Users');
+//require('./models/Questions');
 require('./config/passport');
+require('./models/Questions');
 app.use(require('./routes'));
 
 //Error handlers & middlewares
 if(!isProduction) {
   app.use((err, req, res, next) => {
-    console.log("error-handler-middleware-calls:", err);
+    console.log("error-handler-middleware-calls:", err );
     res.status(err.status || 500);
 
     res.json({
@@ -63,4 +65,4 @@ app.use((err, req, res, next) => {
   });
 });
  
-app.listen(8000, () => console.log('Server running on http://localhost:8000/'));
+app.listen(5000, () => console.log('Server running on http://localhost:5000/'));
